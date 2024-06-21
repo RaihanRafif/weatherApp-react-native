@@ -14,7 +14,7 @@ export default function HomeScreen() {
     // Mengatur status ke "loading"
     setStatus('loading')
     axios
-      .get(`${BASE_URL}?q=${location}&appid=${process.env['API_KEY']}`)
+      .get(`${BASE_URL}?q=${location}&appid=${process.env.EXPO_PUBLIC_API_KEY}`)
       .then((response) => {
         const data = response.data
         data.visibility /= 1000
@@ -31,7 +31,7 @@ export default function HomeScreen() {
       })
   }
 
-  const renderComponent = () => {
+  const renderComponent = () => {    
     switch (status) {
       case 'loading':
         return <ActivityIndicator size="large" />
